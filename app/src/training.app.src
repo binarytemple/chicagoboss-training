@@ -1,8 +1,8 @@
 {application, training, [
-        {description, "My Awesome Web Framework"},
+        {description, "Erlang training application"},
         {vsn, "0.0.1"},
         {modules, []},
         {registered, []},
-        {applications, [kernel, stdlib, crypto]},
+        {applications, [kernel, stdlib, crypto, mysql]},
         {env, []}
     ]}.

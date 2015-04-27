@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>chatroom</title>
+    </head>
+    <body>
+ list chatrooms
+ 
+ 
+<h2>ToDo list</h2>
+
+<a href="/">Back to theMob index</a><br />
+{% if errors %}
+<ol>
+{% for error in errors %}
+<li><font color=red>{{ error }}</font>
+{% endfor %}
+</ol>
+{% endif %}
+
+<ul>
+{% if chats %}
+  {% for chat in chats %}
+  <li>{{ chat.message }}({{ chat.created }})</li>
+  {% endfor  %}
+{% else %}
+  <li>Nothing to do.</li>
+{% endif %}
+</ul>
+<h4>Add a todo:</h4>
+<form method='POST' target="/chatroom">
+<input id="Message" name="message" />
+<input type="submit" value="Create Chat" />
+</form>
+ 
+ 
+ 
+ 
+ </body>
+</html>
