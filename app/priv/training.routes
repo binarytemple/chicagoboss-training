@@ -14,9 +14,10 @@
 % Note that routing across applications results in a 302 redirect.
 
 % Front page
-{"/", [{controller, "world"}, {action, "hello"}]}.
+{"/world", [{controller, "world"}, {action, "hello"}]}.
 
-{"/chatroom", [ { controller, "chatroom"} , {action, "list"}]}.
+{"/chat/history", [ { controller, "chatroom"} , {action, "list"}]}.
+{"/chat/console", [ { controller, "chatroom"} , {action, "console"}]}.
 
 % 404 File Not Found handler
 {404, [{controller, "world"}, {action, "lost"}]}.
