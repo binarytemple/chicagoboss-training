@@ -1,37 +1,31 @@
 <html>
-    <head>
-        <title>Chatroom</title>
-    </head>
-    <body>
-
+<head>
+    <title>Chatroom</title>
+</head>
+<body>
 <h2>Messages</h2>
-
-<a href="/">Index</a><br />
+<a href="/">Index</a><br/>
 {% if errors %}
 <ol>
-{% for error in errors %}
-<li><font color=red>{{ error }}</font>
-{% endfor %}
+    {% for error in errors %}
+    <li style="color: #118200">{{ error }}</li>
+    {% endfor %}
 </ol>
 {% endif %}
-
 <ul>
-{% if chats %}
-  {% for chat in chats %}
-  <li>{{ chat.message }}({{ chat.created }})</li>
-  {% endfor  %}
-{% else %}
-  <li>Nothing to do.</li>
-{% endif %}
+    {% if chats %}
+        {% for chat in chats %}
+        <li>{{ chat.message }}({{ chat.created }})</li>
+        {% endfor %}
+    {% else %}
+        <li>Nothing to do.</li>
+    {% endif %}
 </ul>
 <h4>Add a todo:</h4>
+
 <form method='POST' target="/chatroom">
-<input id="message" name="message" />
-<input type="submit" value="Create Message" />
+    <input id="message" name="message"/>
+    <input type="submit" value="Create Message"/>
 </form>
- 
- 
- 
- 
- </body>
+</body>
 </html>
