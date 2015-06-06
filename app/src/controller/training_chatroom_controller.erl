@@ -5,12 +5,12 @@ console('GET', []) ->
     lager:log(info, self(), "~p console", [ training_chatroom_controller ]),
     {ok, [{user,uuid:to_string( uuid:uuid1() ) }]}.
 
-list('GET', []) ->
+history('GET', []) ->
     lager:log(info, self(), "~p list", [ training_chatroom_controller ]),
     Chats = boss_db:find(chat, []),
     lager:log(info, self(), "Req:  ~p ", [ Req ]),
     lager:log(info, self(), "Chats :  ~p ", [ Chats ]),
-    {ok, [{chats, Chats}]};
+    {ok, [{chats, Chats}]}.
 
 list('POST', []) ->
     lager:log(info, self(), "Req:  ~p ", [ Req ]),

@@ -1,2 +1,2 @@
--module(chat,[Id, Message, Created]).
+-module(chat,[Id, UserId, Message, Created]).
 -compile(export_all).

@@ -1,0 +1,7 @@
+
+
+SELECT * FROM chats;
+INSERT INTO chats (`created`,`message`) VALUES ('2015-04-04T00:00:00','message')
+
+
+

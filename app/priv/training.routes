@@ -17,7 +17,7 @@
 {"/world", [{controller, "base"}, {action, "hello"}]}.
 {"/", [{controller, "base"}, {action, "index"}]}.
 
-{"/chat/history", [ { controller, "chatroom"} , {action, "list"}]}.
+{"/chat/history", [ { controller, "chatroom"} , {action, "history"}]}.
 {"/chat/console", [ { controller, "chatroom"} , {action, "console"}]}.
 
 % 404 File Not Found handler
