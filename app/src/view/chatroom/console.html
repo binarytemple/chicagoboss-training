@@ -44,12 +44,15 @@
     </script>
 </head>
 <body>
+{% for flash in boss_flash %} {{ flash.method }} - {{ flash.title }} - {{ flash.message }} {% endfor %}
+
+
 <h2>Send:</h2>
 
 <form id="chat" method="POST" action='#'>
     <fieldset>
         <legend>Send message</legend>
-        <p><label for="user">User</label><input type="text" name="user" id="user" value="{{user}}"/></p>
+        <p><label for="user">User</label><input type="text" name="user" id="user" value="{{username}}"/></p>
 
         <p><label for="message">Message</label><textarea rows="10" cols="30" name="message" id="message"></textarea></p>
     </fieldset>

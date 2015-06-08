@@ -1,17 +1,17 @@
-<html>
-<head>
-    <title>site index </title>
-</head>
-<body>
+{% extends "templates/parent.html" %}
+{% block title %}site index!{% endblock %}
+
+{% block body%}
+
+<form action="/logout" method="post"  >
+<button type="submit" title="logout">logout</button>
+</form>
+<a href="/chat/console">console</a>
+<a href="/chat/history">history</a>
 
 Welcome to the training website!
 
-<br/>
-erl_date - {{ erl_date }}
-<br/>
-erl_time - {{ erl_time }}
-</body>
-</html>
+{% endblock %}
 
 
 

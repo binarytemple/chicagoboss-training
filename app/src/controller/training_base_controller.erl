@@ -1,19 +1,22 @@
--module(training_base_controller, [Req]).
+-module(training_base_controller, [Req,SessionID]).
 -compile(export_all).
 
-%simple route
-hello('GET', []) ->
-  {ok, [
-    {erl_date, erlang:date()},
-    {erl_time, erlang:time()}
-  ]}.
+
 
 %simple route
 index('GET', []) ->
   {ok, [
     {erl_date, erlang:date()},
     {erl_time, erlang:time()}
+  ]};
+
+%simple route
+index('POST', []) ->
+  {ok, [
+    {erl_date, erlang:date()},
+    {erl_time, erlang:time()}
   ]}.
+
 
 %aka 404
 lost('GET', []) ->

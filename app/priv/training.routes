@@ -17,6 +17,10 @@
 {"/world", [{controller, "base"}, {action, "hello"}]}.
 {"/", [{controller, "base"}, {action, "index"}]}.
 
+{"/login", [ { controller, "security"} , {action, "login"}]}.
+{"/logout", [ { controller, "security"} , {action, "logout"}]}.
+
+
 {"/chat/history", [ { controller, "chatroom"} , {action, "history"}]}.
 {"/chat/console", [ { controller, "chatroom"} , {action, "console"}]}.
 

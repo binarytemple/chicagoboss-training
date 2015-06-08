@@ -50,7 +50,7 @@ handle_incoming(ServiceName, WebSocketId, Message, State) ->
   %% end,
 
   DecodedMessage = jsx:decode(Message),
-  lager:log(info, self(), "Message = ~p - ~p", [Message, DecodedMessage]),
+  lager:log(info, self(), "SessionId = ~p, Message = ~p - ~p", [SessionId, Message, DecodedMessage]),
 
   store_message(
     proplists:get_value(<<"user">>, DecodedMessage),
@@ -76,7 +76,7 @@ store_message(_, undefined) ->
 ;
 store_message(User, Message) ->
   lager:log(info, self(), "Both param", []),
-  Chat = chat:new(id, User, Message, null),
+  Chat = chat:new(id, User, Message, undefined),
   Create = Chat:save(),
   {ok, Create}
 .
