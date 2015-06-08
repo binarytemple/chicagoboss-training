@@ -1,52 +1,48 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>Websocket chat</title>
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" charset="utf-8">
-        $(document).ready(function () {
-            document.ws =
-                    new WebSocket('ws://' + window.location.host + '/websocket/chat_protocol');
-            document.ws.onopen = function () {
-                document.ws.send(JSON.stringify({_type: "state", _state: "start"}));
-            };
-            document.ws.onmessage = function (msg) {
-                try {
-                    msg = JSON.parse(msg.data)
-                    if (msg.type == "message") {
-                        $('#log').append('<br>RCV: "' + msg.message + '",' + ' from: ' + msg.user);
-                    }
-                    else if (msg._type == "state") {
-                        $('#log').append('<br>Received state update :' + msg.state);
-                    }
-                    else {
-                        $('#log').append('<br>Received unknown message:"' + msg);
-                    }
-                } catch (err) {
-                    $('#log').append('<br>Received non-js message:"' + msg);
+{% extends "templates/parent.html" %}
+{% block title %}Websocket chat{% endblock %}
+{% block head_misc %}
+<script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function () {
+        document.ws =
+                new WebSocket('ws://' + window.location.host + '/websocket/chat_protocol');
+        document.ws.onopen = function () {
+            document.ws.send(JSON.stringify({_type: "state", _state: "start"}));
+        };
+        document.ws.onmessage = function (msg) {
+            try {
+                msg = JSON.parse(msg.data)
+                if (msg.type == "message") {
+                    $('#log').append('<br>RCV: "' + msg.message + '",' + ' from: ' + msg.user);
                 }
-            };
-            $('form#chat').submit(function (event) {
-                var _user = $('#user').val();
-                var _message = $('#message').val();
-                if (document.ws.readyState == document.ws.CLOSING ||
-                        document.ws.readyState == document.ws.CLOSED) {
-                    alert("connection in closed or closing state, refresh page to reconnnect");
-                } else if (document.ws.readyState == document.ws.CONNECTING) {
-                    alert("connection in connecting state,please try again");
+                else if (msg._type == "state") {
+                    $('#log').append('<br>Received state update :' + msg.state);
                 }
                 else {
-                    document.ws.send(JSON.stringify({type: "message", user: _user, message: _message}));
+                    $('#log').append('<br>Received unknown message:"' + msg);
                 }
-                return false;
-            });
+            } catch (err) {
+                $('#log').append('<br>Received non-js message:"' + msg);
+            }
+        };
+        $('form#chat').submit(function (event) {
+            var _user = $('#user').val();
+            var _message = $('#message').val();
+            if (document.ws.readyState == document.ws.CLOSING ||
+                    document.ws.readyState == document.ws.CLOSED) {
+                alert("connection in closed or closing state, refresh page to reconnnect");
+            } else if (document.ws.readyState == document.ws.CONNECTING) {
+                alert("connection in connecting state,please try again");
+            }
+            else {
+                document.ws.send(JSON.stringify({type: "message", user: _user, message: _message}));
+            }
+            return false;
         });
-    </script>
-</head>
-<body>
-{% for flash in boss_flash %} {{ flash.method }} - {{ flash.title }} - {{ flash.message }} {% endfor %}
-
-
+    });
+</script>
+{% endblock %}
+{% block body%}
 <h2>Send:</h2>
 
 <form id="chat" method="POST" action='#'>
@@ -61,5 +57,5 @@
 <h2>Receive:</h2>
 
 <div id="log"></div>
-</body>
-</html>
+
+{% endblock %}

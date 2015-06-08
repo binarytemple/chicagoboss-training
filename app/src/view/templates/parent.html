@@ -1,8 +1,14 @@
 <html>
 <title>{% block title %}title goes here...{% endblock %}</title>
+{% block head_misc %}{% endblock %}
 <body>
+<form action="/logout" method="post"  >
+    <button type="submit" title="logout">logout</button>
+</form>
+<a href="/chat/console">console</a>
+<a href="/chat/history">history</a>
 
-{% block body %}title goes here...{% endblock %}
-
+{% for flash in boss_flash %} {{ flash.method }} - {{ flash.title }} - {{ flash.message }} {% endfor %}
+{% block body %}body block goes here...{% endblock %}
 </body>
 </html>

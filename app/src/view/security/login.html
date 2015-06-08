@@ -1,11 +1,6 @@
-<html>
-<head>
-    <title>Chatroom</title>
-</head>
-<body>
-
-{% for flash in boss_flash %} {{ flash.method }} - {{ flash.title }} - {{ flash.message }} {% endfor %}
-
+{% extends "templates/parent.html" %}
+{% block title %}Login{% endblock %}
+{% block body%}
 <form method='POST' target="/login">
     <fieldset>
         <label>username</label>
@@ -17,5 +12,4 @@
     </fieldset>
     <input type="submit" value="submit"/>
 </form>
-</body>
-</html>
+{% endblock %}

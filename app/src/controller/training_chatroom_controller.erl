@@ -2,7 +2,7 @@
 -compile(export_all).
 
 console('GET', []) ->
-  boss_flash:add(SessionID, notice, "Flash Title", "Flash Message"),
+%%   boss_flash:add(SessionID, notice, "Flash Title", "Flash Message"),
   %%boss_session:new_session("foo"),
   boss_session:set_session_data(SessionID, "bar", "baz"),
   lager:log(info, self(), "~p console", [training_chatroom_controller]),
